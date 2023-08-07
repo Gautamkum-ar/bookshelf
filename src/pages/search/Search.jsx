@@ -1,18 +1,12 @@
 import { FaArrowLeft } from "react-icons/fa";
 import "../search/searchStyle.css";
 import { Link } from "react-router-dom";
-import { bookData } from "../../database/DataBase";
-import { useState } from "react";
 import { BookCard } from "../../components/bookCard/BookCard";
+import { useBook } from "../../context/Context";
 
 export const Search = () => {
-  const [userInput, setUserInput] = useState("");
+  const { searchData, setUserInput } = useBook();
 
-  const searchData = bookData.filter(
-    ({ genre }) =>
-      userInput !== "" &&
-      genre.toLocaleLowerCase().includes(userInput.toLocaleLowerCase())
-  );
   return (
     <div className="search__container">
       <Link className="back_to_Home" to="/">
@@ -26,7 +20,7 @@ export const Search = () => {
 
       <div className="searched__data">
         {searchData?.map((book) => (
-          <BookCard book={book} dis="true" />
+          <BookCard book={book} />
         ))}
       </div>
     </div>
