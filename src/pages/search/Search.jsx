@@ -15,6 +15,7 @@ export const Search = () => {
       <input
         className="search__input"
         type="text"
+        placeholder="Search by genre"
         onChange={(e) => setUserInput(e.target.value)}
       />
 
